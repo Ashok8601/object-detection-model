@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Anomaly Detection</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background: #f4f4f4;
+        }
+
+        .box {
+            margin-top: 50px;
+            background: white;
+            padding: 20px;
+            display: inline-block;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px #ccc;
+        }
+
+        .good {
+            color: green;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .bad {
+            color: red;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        img {
+            margin-top: 15px;
+            width: 250px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>AutoEncoder Anomaly Detection</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" required>
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if result %}
+
+        <h3 class="{{ 'good' if result=='GOOD' else 'bad' }}">
+            {{ result }}
+        </h3>
+
+        <p>Score: {{ score }}</p>
+
+        <img src="{{ img_path }}">
+
+    {% endif %}
+</div>
+
+</body>
+</html>
